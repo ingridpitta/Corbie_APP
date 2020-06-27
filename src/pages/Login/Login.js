@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import { MasterTemplate } from '../../templates';
-import { FormLogin } from '../../components/molecules';
+import React, { Component } from "react";
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   render() {
-    return (
-      <MasterTemplate loggedUser={this.props.loggedUser} {...this.props}>
-      <FormLogin {...this.props} />
-    </MasterTemplate>
-    )
+    return <h1>Login</h1>;
   }
 }
-
 
 export default Login;

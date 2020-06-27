@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { MasterTemplate } from '../../templates';
-import DashboardView from '../../components/organisms/DashboardView/DashboardView';
 
-class Dashboard extends Component {
-  render() {
-    return (
-      <MasterTemplate loggedUser={this.props.loggedUser} {...this.props}>
-      <DashboardView/>
-     </MasterTemplate>
-    )
+class DashBoard extends Component {
+  constructor() {
+    super();
+    this.state = {};
   }
-};
 
-export default Dashboard;
+  render() {
+    return <h1>Dashboard</h1>;
+  }
+}
+
+export default DashBoard;

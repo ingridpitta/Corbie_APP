@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { MasterTemplate } from '../../templates';
-import { ProjectView } from  '../../components/molecules/'
+import React, { Component } from "react";
 
 class Project extends Component {
-  render() {
-    return (
-      <MasterTemplate loggedUser={this.props.loggedUser} {...this.props}>
-      <ProjectView/>
-     </MasterTemplate>
-    )
+  constructor() {
+    super();
+    this.state = {};
   }
-};
+
+  render() {
+    return <h1>Project</h1>;
+  }
+}
 
 export default Project;
