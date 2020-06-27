@@ -49,7 +49,9 @@ class App extends Component {
         <Route
           exact
           path="/"
-          render={props => <Home loggedUser={loggedUser} logout={this.logout} {...props} />}
+          render={props => (
+            <Home loggedUser={loggedUser} logout={this.logout} userInfo={userInfo} {...props} />
+          )}
         />
         <Route
           exact
@@ -59,6 +61,7 @@ class App extends Component {
               logout={this.logout}
               login={this.login}
               loggedUser={loggedUser}
+              userInfo={userInfo}
               {...props}
             />
           )}
@@ -72,6 +75,7 @@ class App extends Component {
               loggedUser={loggedUser}
               {...props}
               login={this.login}
+              userInfo={userInfo}
             />
           )}
         />

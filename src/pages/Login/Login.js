@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { GeneralTemplate } from "../../templates";
 
 class Login extends Component {
   constructor() {
@@ -7,7 +8,12 @@ class Login extends Component {
   }
 
   render() {
-    return <h1>Login</h1>;
+    const { loggedUser, logout, userInfo, login } = this.props;
+    return (
+      <GeneralTemplate logout={logout} loggedUser={loggedUser} userInfo={userInfo}>
+        <h1>Login</h1>
+      </GeneralTemplate>
+    );
   }
 }
 

@@ -6,7 +6,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/images/Logo.svg";
 
-const GeneralTemplate = ({ children, loggedUser, logout }) => {
+const GeneralTemplate = ({ children, loggedUser, logout, userInfo }) => {
   return (
     <div className="generalTemplate--container">
       <nav>
@@ -23,6 +23,11 @@ const GeneralTemplate = ({ children, loggedUser, logout }) => {
                 <Link to="/" onClick={logout}>
                   <li>Sair</li>
                 </Link>
+                {userInfo && (
+                <div className="generalTemplate--userInfo">
+                    <h2>UI</h2>
+                </div>
+                )}
               </React.Fragment>
             ) : (
               <React.Fragment>

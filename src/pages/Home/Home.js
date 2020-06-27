@@ -8,9 +8,13 @@ class Home extends Component {
   }
 
   render() {
-    const { loggedUser, logout } = this.props;
+    const { loggedUser, logout, userInfo } = this.props;
     return (
-      <GeneralTemplate logout={logout} loggedUser={loggedUser}>
+      <GeneralTemplate
+        logout={logout}
+        loggedUser={loggedUser}
+        userInfo={userInfo}
+      >
         <h1>Home</h1>
       </GeneralTemplate>
     );
