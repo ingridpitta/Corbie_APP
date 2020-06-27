@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import "./App.css";
+import "./app.styles.scss";
 import { DashBoard, Home, Login, Project, SignUp } from "./pages";
 import { ProtectedRoute } from "./components/authentication";
 

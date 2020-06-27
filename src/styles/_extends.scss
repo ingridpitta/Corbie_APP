@@ -1,0 +1,40 @@
+@import "./_variables";
+@import "./_mixins";
+
+%nav {
+  background-color: $white;
+  @include flex(center, space-between, row);
+  font-family: $font-family--default;
+  max-width: 100vw;
+  width: 100%;
+  height: 53px;
+  z-index: 1;
+  box-shadow: 0.09375rem 0.125rem 0.125rem 0.09375rem rgba(0, 0, 0, 0.16);
+
+  div {
+    button {
+      font-size: $font-size--text;
+      font-weight: bold;
+      vertical-align: -webkit-baseline-middle;
+      font-family: $font-family--default;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      svg {
+        vertical-align: middle;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .navBar--logo {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}
+

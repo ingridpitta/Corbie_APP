@@ -1,0 +1,43 @@
+//Colors
+$color-gray: #494b4b;
+$color-gray--medium: rgba(238, 238, 238, 0.6); // With opacity
+$color-gray--light: #bebebe;
+
+//Primary Colors
+$white: #fff;
+$black: #000;
+
+//Texts
+$text--default: $color-gray; 
+
+//Font-Families
+$font-family--default: "Chivo", sans-serif;
+$font-family--secondary: "Roboto", sans-serif;
+
+//Font-Sizes
+$font-size--default: 16px;
+
+$font-size--secondary: 1.5rem;
+$font-size--tertiary: 0.75rem;
+
+$font-size--title--big: 2rem;
+$font-size--title: 1.625rem;
+$font-size--subtitle: 1.125rem;
+$font-size--text: 1rem;
+
+
+$font-size--big: 2rem;
+$font-size--medium: 0.885rem;
+$font-size--medium--secondary: 1.25rem;
+$font-size--small: 0.5rem;
+
+$font-size--footer: 1.125rem;
+
+//Breakpoints
+$mobile-small: 320px;
+$mobile: 420px;
+$tablet-ver: 768px;
+$tablet-hor: 1024px;
+$desktop-small: 1280px;
+$desktop: 1440px;
+$desktop-large: 2560px;
