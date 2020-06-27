@@ -5,6 +5,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/images/Logo.svg";
+import "./generalTemplate.styles.scss";
 
 const GeneralTemplate = ({ children, loggedUser, logout, userInfo }) => {
   return (
@@ -18,10 +19,10 @@ const GeneralTemplate = ({ children, loggedUser, logout, userInfo }) => {
             {loggedUser ? (
               <React.Fragment>
                 <Link to="/dashboard">
-                  <li>Dashboard</li>
+                  <li>DASHBOARD</li>
                 </Link>
                 <Link to="/" onClick={logout}>
-                  <li>Sair</li>
+                  <li>SAIR</li>
                 </Link>
                 {userInfo && (
                 <div className="generalTemplate--userInfo">
@@ -32,10 +33,10 @@ const GeneralTemplate = ({ children, loggedUser, logout, userInfo }) => {
             ) : (
               <React.Fragment>
                 <Link to="/login">
-                  <li>Entrar</li>
+                  <li>ENTRAR</li>
                 </Link>
                 <Link to="/signup">
-                  <li>Cadastrar</li>
+                  <li>CADASTRAR</li>
                 </Link>
               </React.Fragment>
             )}
