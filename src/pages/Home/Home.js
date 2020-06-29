@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { GeneralTemplate } from "../../templates";
+import { HomeContent } from "../../components/organisms";
 
 class Home extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class Home extends Component {
         loggedUser={loggedUser}
         userInfo={userInfo}
       >
-        <h1>Home</h1>
+        <HomeContent />
       </GeneralTemplate>
     );
   }

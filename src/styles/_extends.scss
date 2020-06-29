@@ -11,8 +11,8 @@
   z-index: 1;
 
   div {
-      @include flex(center, space-between, row);
-      width: 100%;
+    @include flex(center, space-between, row);
+    width: 100%;
     padding: 30px 60px;
 
     a {
@@ -36,13 +36,18 @@
         cursor: pointer;
       }
     }
-    ul{
-        @include flex(center, space-between, row);
-        a{
-            padding: 0 10px;
-            cursor: pointer;
+    ul {
+      @include flex(center, space-between, row);
+      a {
+        padding: 0 15px;
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+          padding: 15px;
+          border-bottom: 1px solid $color-gray--light;
         }
+      }
     }
   }
 }
-

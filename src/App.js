@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import "./app.styles.scss";
 import { DashBoard, Home, Login, Project, SignUp } from "./pages";
 import { ProtectedRoute } from "./components/authentication";
+import ApiService from "./api/Service";
+import "./app.styles.scss";
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +51,12 @@ class App extends Component {
           exact
           path="/"
           render={props => (
-            <Home loggedUser={loggedUser} logout={this.logout} userInfo={userInfo} {...props} />
+            <Home
+              loggedUser={loggedUser}
+              logout={this.logout}
+              userInfo={userInfo}
+              {...props}
+            />
           )}
         />
         <Route
@@ -82,7 +88,7 @@ class App extends Component {
         <ProtectedRoute
           exact
           path="/project"
-          component={<Project />}
+          component={Project}
           logout={this.logout}
           loggedUser={loggedUser}
           userInfo={userInfo}
@@ -90,7 +96,7 @@ class App extends Component {
         <ProtectedRoute
           exact
           path="/dashboard"
-          component={<DashBoard />}
+          component={DashBoard}
           logout={this.logout}
           loggedUser={loggedUser}
           userInfo={userInfo}

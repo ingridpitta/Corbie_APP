@@ -1,0 +1,73 @@
+@import "../../../styles//index";
+
+.homeContent--container {
+  @include flex(center, center, row);
+  width: 100%;
+
+  section:first-child {
+    @include flex(left, flex-end, column);
+    width: 50%;
+    padding-left: 60px;
+    height: 720px;
+    margin-bottom: 30px;
+
+    h1 {
+      width: 50%;
+      font-family: $font-family--default;
+      font-size: 64px;
+      padding: 20px 0;
+      font-weight: bold;
+    }
+
+    h2 {
+      width: 50%;
+      font-family: $font-family--default;
+      font-size: 36px;
+      padding: 0 0 20px 0;
+      font-weight: normal;
+    }
+
+    p {
+      width: 50%;
+      font-family: $font-family--default;
+      font-size: 20px;
+      padding: 0 0 20px 0;
+      font-weight: lighter;
+      span {
+        font-family: $font-family--default;
+        font-size: 20px;
+        padding: 0 0 20px 0;
+        font-weight: bold;
+      }
+    }
+
+    a {
+      max-width: 25%;
+      background-color: $white;
+      font-family: $font-family--default;
+      text-align: center;
+      font-weight: normal;
+      font-size: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border: 0.5px solid $color-gray--light;
+      border-radius: 5px;
+
+      &:hover,
+      &:active {
+        color: $white;
+        background-color: $color-gray--light;
+      }
+    }
+  }
+
+  section:last-child {
+    margin: 100px 0;
+    background-image: url(../../../assets//images/landingPage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 720px;
+  }
+}
