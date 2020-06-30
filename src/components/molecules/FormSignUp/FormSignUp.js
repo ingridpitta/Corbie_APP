@@ -3,20 +3,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { FormInput, Button } from "../../atoms";
-import FormLoginSchema from "./FormLogin.schema";
+import FormSignUpSchema from "./FormSignUp.schema";
 import ApiService from "../../../api/Service";
-import "./formLogin.styles.scss";
+import "./formSignUp.styles.scss";
 
-const FormLogin = ({ login, ...props }) => {
-  const [loginErrorMessage, setLoginErrorMessage] = useState("");
+const FormSignUp = ({ login, ...props }) => {
+  const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
   const initialState = {
+    name: "",
     username: "",
+    email: "",
     password: ""
   };
 
   const onSubmitMethod = async (values, actions) => {
     try {
-      const logUser = await ApiService.loginUser(values);
+      const logUser = await ApiService.subscribeUser(values);
 
       login();
 
@@ -25,14 +27,14 @@ const FormLogin = ({ login, ...props }) => {
 
       props.history.push("/dashboard");
     } catch (err) {
-      setLoginErrorMessage(err.response.data.message);
+      setSignUpErrorMessage(err.response.data.message);
     }
   };
 
   return (
     <Formik
       initialValues={initialState}
-      validationSchema={FormLoginSchema}
+      validationSchema={FormSignUpSchema}
       onSubmit={onSubmitMethod}
     >
       {({
@@ -47,12 +49,38 @@ const FormLogin = ({ login, ...props }) => {
         <form onSubmit={handleSubmit}>
           <FormInput
             {...props}
+            name="name"
+            label="Nome"
+            placeholder="Insira seu Nome"
+            value={values.name}
+            error={errors.name || (signUpErrorMessage && true)}
+            touched={touched.name}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            isLoading={isSubmitting}
+          />
+
+          <FormInput
+            {...props}
             name="username"
             label="Usuário"
             placeholder="Insira seu nome de Usuário"
             value={values.username}
-            error={errors.username || (loginErrorMessage && true)}
+            error={errors.username || (signUpErrorMessage && true)}
             touched={touched.username}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            isLoading={isSubmitting}
+          />
+
+          <FormInput
+            {...props}
+            name="email"
+            label="Email"
+            placeholder="Insira seu Email"
+            value={values.email}
+            error={errors.email || (signUpErrorMessage && true)}
+            touched={touched.email}
             handleChange={handleChange}
             handleBlur={handleBlur}
             isLoading={isSubmitting}
@@ -65,19 +93,19 @@ const FormLogin = ({ login, ...props }) => {
             type="password"
             placeholder="Insira sua senha"
             value={values.password}
-            error={errors.password || loginErrorMessage}
+            error={errors.password || signUpErrorMessage}
             touched={touched.password}
             handleChange={handleChange}
             handleBlur={handleBlur}
             isLoading={isSubmitting}
           />
 
-          <div className="formLogin--btn">
+          <div className="formSignUp--btn">
             <Button type="submit" isLoading={isSubmitting}>
-              Entrar
+              Cadastrar
             </Button>
             <span>ou</span>
-            <Link to="/signup">Cadastre-se</Link>
+            <Link to="/login">Login</Link>
           </div>
         </form>
       )}
@@ -85,4 +113,4 @@ const FormLogin = ({ login, ...props }) => {
   );
 };
 
-export default FormLogin;
+export default FormSignUp;

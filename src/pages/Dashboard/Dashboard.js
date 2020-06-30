@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { GeneralTemplate } from "../../templates";
 
 class DashBoard extends Component {
@@ -8,9 +8,13 @@ class DashBoard extends Component {
   }
 
   render() {
-    const { loggedUser, logout, userInfo } = this.props;
+    const { loggedUser, logout, userInfo, ...props } = this.props;
     return (
-      <GeneralTemplate logout={logout} loggedUser={loggedUser} userInfo={userInfo}>
+      <GeneralTemplate
+        logout={logout}
+        loggedUser={loggedUser}
+        userInfo={userInfo}
+      >
         <h1>DashBoard</h1>
       </GeneralTemplate>
     );

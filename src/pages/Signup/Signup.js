@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {SignUpContent} from "../../components/organisms";
 import { GeneralTemplate } from "../../templates";
 
 class SignUp extends Component {
@@ -8,14 +9,14 @@ class SignUp extends Component {
   }
 
   render() {
-    const { loggedUser, logout, userInfo, login } = this.props;
+    const { loggedUser, logout, userInfo, login, ...props } = this.props;
     return (
       <GeneralTemplate
         logout={logout}
         loggedUser={loggedUser}
         userInfo={userInfo}
       >
-        <h1>SignUp</h1>
+        <SignUpContent login={login} {...props}/>
       </GeneralTemplate>
     );
   }
