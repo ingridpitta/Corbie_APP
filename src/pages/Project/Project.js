@@ -8,7 +8,9 @@ class Project extends Component {
   }
 
   render() {
-    const { loggedUser, logout, userInfo } = this.props;
+    const { loggedUser, logout, userInfo, location } = this.props;
+    const { projectsInfo } = location.state;
+    console.log({ projectsInfo });
     return (
       <GeneralTemplate
         logout={logout}
