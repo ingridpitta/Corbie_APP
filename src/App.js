@@ -20,15 +20,17 @@ class App extends Component {
 
     if (loggedUserInfo) {
       this.setState({
-        loggedUser: true,
-        userInfo: loggedUserInfo
+        loggedUser: true
       });
     }
   };
 
-  login = () => {
+  // *TODO: Checar esse erro durante o signup[não está redirecionando para a tela de dashboard no signup, mas redireciona no login]: due to a permission issue. Cache is disabled.
+  login = async () => {
+    const user = await ApiService.getUserInfo();
     this.setState({
-      loggedUser: true
+      loggedUser: true,
+      userInfo: user
     });
   };
 

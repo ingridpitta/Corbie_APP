@@ -19,26 +19,29 @@ class DashBoard extends Component {
 
   onClick = async e => {
     const { projects } = this.state;
-    const id = e.target.id.split("--")[0];
+    const id = e.target.attributes.data.value;
 
-    const project = await projects.filter(item => item._id.includes(id));
-
-    const tasks = await ApiService.listAllTasksFromProject(id);
-
-    const projectsInfo = { ...project[0], tasks };
+    const projectInfos = await this.getProjectInfos(projects, id);
 
     this.props.history.push({
       pathname: "/project",
       state: {
-        projectsInfo
+        projectInfos
       }
     });
+  };
+
+  getProjectInfos = async (projects, id) => {
+    const project = await projects.filter(item => item._id.includes(id));
+    const tasks = await ApiService.listAllTasksFromProject(id);
+
+    return { ...project[0], tasks };
   };
 
   render() {
     const { loggedUser, logout, userInfo, ...props } = this.props;
     const { projects } = this.state;
-    
+
     return (
       <GeneralTemplate
         logout={logout}

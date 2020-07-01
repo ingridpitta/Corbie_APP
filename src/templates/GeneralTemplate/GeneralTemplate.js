@@ -25,9 +25,9 @@ const GeneralTemplate = ({ children, loggedUser, logout, userInfo }) => {
                   <li>SAIR</li>
                 </Link>
                 {userInfo && (
-                <div className="generalTemplate--userInfo">
-                    <h2>UI</h2>
-                </div>
+                  <div className="generalTemplate--userInfo">
+                    <h2>{userInfo.name.toUpperCase().split("")[0]}</h2>
+                  </div>
                 )}
               </React.Fragment>
             ) : (

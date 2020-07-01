@@ -18,7 +18,7 @@ const FormLogin = ({ login, ...props }) => {
     try {
       const logUser = await ApiService.loginUser(values);
 
-      login();
+      await login();
 
       localStorage.setItem("logged-user-info", JSON.stringify(logUser));
       actions.setSubmitting(false);

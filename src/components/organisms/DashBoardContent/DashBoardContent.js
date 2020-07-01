@@ -16,21 +16,19 @@ const DashBoardContent = ({ projects, userInfos, onClick, ...props }) => {
           return (
             <div
               key={`${index + 1}--project${project._id}`}
-              id={`${project._id}--container`}
+              data={project._id}
               onClick={onClick}
               style={{ zIndex: "10" }}
             >
-              <h2 id={`${project._id}--title`}>
-                {project.title}
-              </h2>
-              <h2 id={`${project._id}--status`}>{project.status}</h2>
-              <h2 id={`${project._id}--hourPrice`}>{project.hourPrice}</h2>
-              <h2 id={`${project._id}--duration`}>{project.duration}</h2>
-              <h2 id={`${project._id}--workedHours`}>Horas Trabalhadas</h2>
-              <Moment format="DD/MM/YYYY" id={`${project._id}--dueDate`}>
+              <h2 data={project._id}>{project.title}</h2>
+              <h2 data={project._id}>{project.status}</h2>
+              <h2 data={project._id}>{project.hourPrice}</h2>
+              <h2 data={project._id}>{project.duration}</h2>
+              <h2 data={project._id}>Horas Trabalhadas</h2>
+              <Moment format="DD/MM/YYYY" data={project._id}>
                 <h2>{project.dueDate}</h2>
               </Moment>
-              <Moment format="DD/MM/YYYY" id={`${project._id}--creationDate`}>
+              <Moment format="DD/MM/YYYY" data={project._id}>
                 <h2>{project.creationDate}</h2>
               </Moment>
             </div>

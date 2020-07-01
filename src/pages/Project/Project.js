@@ -9,8 +9,9 @@ class Project extends Component {
 
   render() {
     const { loggedUser, logout, userInfo, location } = this.props;
-    const { projectsInfo } = location.state;
-    console.log({ projectsInfo });
+    const { projectInfos } = location.state;
+
+    console.log({ projectInfos });
     return (
       <GeneralTemplate
         logout={logout}
