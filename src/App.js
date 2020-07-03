@@ -25,12 +25,12 @@ class App extends Component {
     }
   };
 
-  // *TODO: Checar esse erro durante o signup[não está redirecionando para a tela de dashboard no signup, mas redireciona no login]: due to a permission issue. Cache is disabled.
+  // *TODO: Checar esse erro durante o signup[não está redirecionando para a tela de dashboard no signup, mas redireciona no login]: Babel could not write cache to file: ....Corbie_API/node_modules/.cache/@babel/register/.babel.7.10.2.development.json due to a permission issue. Cache is disabled.
   login = async () => {
-    const user = await ApiService.getUserInfo();
+    // const user = await ApiService.getUserInfo();
     this.setState({
-      loggedUser: true,
-      userInfo: user
+      loggedUser: true
+      // userInfo: user
     });
   };
 

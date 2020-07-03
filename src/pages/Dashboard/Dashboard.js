@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { DashBoardContent } from "../../components/organisms";
-import { GeneralTemplate } from "../../templates";
+import { DashBoardContent, ModalContent } from "../../components/organisms";
+import { GeneralTemplate, ModalTemplate } from "../../templates";
 import ApiService from "../../api/Service";
 
 class DashBoard extends Component {
   constructor() {
     super();
     this.state = {
-      projects: []
+      projects: [],
+      visible: false,
+      loading: false
     };
   }
 
@@ -38,23 +40,55 @@ class DashBoard extends Component {
     return { ...project[0], tasks };
   };
 
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = () => {
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false, visible: false });
+    }, 3000);
+  };
+
+  handleCancel = () => {
+    this.setState({ visible: false });
+  };
+
   render() {
     const { loggedUser, logout, userInfo, ...props } = this.props;
-    const { projects } = this.state;
+    const { projects, visible, loading } = this.state;
 
     return (
-      <GeneralTemplate
-        logout={logout}
-        loggedUser={loggedUser}
-        userInfo={userInfo}
-      >
-        <DashBoardContent
+      <React.Fragment>
+        {visible && (
+          <ModalTemplate>
+            <ModalContent
+              pathname="dashboard"
+              visible={visible}
+              loading={loading}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              title="Cadastre seu projeto"
+            />
+          </ModalTemplate>
+        )}
+        <GeneralTemplate
+          logout={logout}
+          loggedUser={loggedUser}
           userInfo={userInfo}
-          projects={projects}
-          onClick={this.onClick}
-          {...props}
-        />
-      </GeneralTemplate>
+        >
+          <DashBoardContent
+            userInfo={userInfo}
+            projects={projects}
+            onClick={this.onClick}
+            showModal={this.showModal}
+            {...props}
+          />
+        </GeneralTemplate>
+      </React.Fragment>
     );
   }
 }

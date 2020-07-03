@@ -24,7 +24,7 @@ const GeneralTemplate = ({ children, loggedUser, logout, userInfo }) => {
                 <Link to="/" onClick={logout}>
                   <li>SAIR</li>
                 </Link>
-                {userInfo && (
+                {userInfo.length && (
                   <div className="generalTemplate--userInfo">
                     <h2>{userInfo.name.toUpperCase().split("")[0]}</h2>
                   </div>

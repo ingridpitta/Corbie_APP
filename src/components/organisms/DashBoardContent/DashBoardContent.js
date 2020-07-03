@@ -3,13 +3,21 @@ import React from "react";
 import Moment from "react-moment";
 import "./dashBoardContent.styles.scss";
 
-const DashBoardContent = ({ projects, userInfos, onClick, ...props }) => {
+const DashBoardContent = ({
+  projects,
+  userInfos,
+  onClick,
+  showModal,
+  ...props
+}) => {
   return (
     <main className="dashBoardContent--container">
       <h1>Seus Projetos</h1>
       <section>
         <input type="text" placeholder="Procurar Projeto" />
-        <button type="button">NOVO PROJETO</button>
+        <button type="button" onClick={showModal}>
+          NOVO PROJETO
+        </button>
       </section>
       <section>
         {projects.map((project, index) => {
