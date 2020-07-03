@@ -8,25 +8,19 @@ import {
   InputValor
 } from "../../atoms";
 import { Input, Button } from "antd";
-import CreateProjectSchema from "./CreateProject.schema";
+import CreateTaskSchema from "./CreateTask.schema";
 import ApiService from "../../../api/Service";
-import "./createProject.styles.scss";
 import "antd/dist/antd.css";
 
-const CreateProject = ({
-  getData,
-  options,
-  onCancel,
-  status,
-  onSubmitMethod
-}) => {
+const CreateTask = ({ getData, options, onSubmitMethod }) => {
   const initialState = {
     title: "",
     description: "",
-    hourPrice: "",
     duration: "",
     cost: "",
     status: "",
+    type: "",
+    profitable: "true",
     creationDate: "",
     dueDate: ""
   };
@@ -35,7 +29,7 @@ const CreateProject = ({
     <div className="createProject--container">
       <Formik
         initialValues={initialState}
-        validationSchema={CreateProjectSchema}
+        validationSchema={CreateTaskSchema}
         onSubmit={onSubmitMethod}
       >
         {({
@@ -54,7 +48,7 @@ const CreateProject = ({
               {...props}
               name="title"
               label="Título"
-              placeholder="Insira o título do projeto"
+              placeholder="Insira o título da tarefa"
               isLoading={isSubmitting}
               value={values.title}
               error={errors.title}
@@ -66,7 +60,7 @@ const CreateProject = ({
               {...props}
               name="description"
               label="Descrição"
-              placeholder="Insira descrição do projeto"
+              placeholder="Insira descrição da tarefa"
               isLoading={isSubmitting}
               value={values.description}
               error={errors.description}
@@ -92,24 +86,11 @@ const CreateProject = ({
                   {...props}
                   name="duration"
                   label="Duração: "
-                  placeholder="Insira o tempo de duração do projeto"
+                  placeholder="Insira o tempo de duração da tarefa"
                   isLoading={isSubmitting}
                   value={values.duration}
                   error={errors.duration}
                   touched={touched.duration}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                />
-
-                <InputValor
-                  {...props}
-                  name="hourPrice"
-                  label="Preço por Hora trabalhada:"
-                  placeholder="Insira o valor"
-                  isLoading={isSubmitting}
-                  value={values.hourPrice}
-                  error={errors.hourPrice}
-                  touched={touched.hourPrice}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                 />
@@ -119,7 +100,7 @@ const CreateProject = ({
                   {...props}
                   name="status"
                   label="Status:"
-                  placeholder="Insira o valor"
+                  placeholder="Insira o status"
                   isLoading={isSubmitting}
                   value={values.status}
                   error={errors.status}
@@ -129,21 +110,34 @@ const CreateProject = ({
                   handleChange={getData}
                 />
 
-                <InputValor
+                <FormInput
                   {...props}
-                  name="cost"
-                  label="Custo do projeto:"
-                  placeholder="Insira o valor"
+                  name="profitable"
+                  label="Profitable"
+                  placeholder=""
                   isLoading={isSubmitting}
-                  value={values.cost}
-                  error={errors.cost}
-                  touched={touched.cost}
+                  value={values.profitable}
+                  error={errors.profitable}
+                  touched={touched.profitable}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+
+                <FormInput
+                  {...props}
+                  name="type"
+                  label="Tipo"
+                  placeholder="Insira o tipo"
+                  isLoading={isSubmitting}
+                  value={values.type}
+                  error={errors.type}
+                  touched={touched.type}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                 />
               </div>
             </div>
-            <div className="btn--createProject">
+            <div className="btn--createTask">
               <Button type="submit" isLoading={isSubmitting}>
                 CADASTRAR
               </Button>
@@ -155,4 +149,4 @@ const CreateProject = ({
   );
 };
 
-export default CreateProject;
+export default CreateTask;

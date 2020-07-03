@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "antd";
-import { CreateProject } from "../../molecules";
+import { CreateProject, CreateTask } from "../../molecules";
 import "./modalContent.styles.scss";
 
 const ModalContent = ({
@@ -9,21 +9,30 @@ const ModalContent = ({
   loading,
   title,
   onOk,
-  onCancel
+  onCancel,
+  status,
+  getData,
+  onSubmitMethod
 }) => {
   const options = [
-    { value: "BACKLOG", displayValue: "BACKLOG" },
-    { value: "ONGOING", displayValue: "ONGOING" },
-    { value: "DONE", displayValue: "DONE" },
-    { value: "CANCELED", displayValue: "CANCELED" }
+    { value: "BACKLOG", name: "BACKLOG" },
+    { value: "ONGOING", name: "ONGOING" },
+    { value: "DONE", name: "DONE" },
+    { value: "CANCELED", name: "CANCELED" }
   ];
   return (
     <div className="modalContent--container">
       <Modal visible={visible} title={title} onOk={onOk} onCancel={onCancel}>
         {pathname === "dashboard" ? (
-          <CreateProject onCancel={onCancel} options={options} />
+          <CreateProject
+            getData={getData}
+            options={options}
+            onCancel={onCancel}
+            status={status}
+            onSubmitMethod={onSubmitMethod}
+          />
         ) : (
-          <h1>TASKS</h1>
+          <CreateTask />
         )}
       </Modal>
     </div>

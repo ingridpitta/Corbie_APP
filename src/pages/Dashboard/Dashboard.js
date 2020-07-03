@@ -9,7 +9,8 @@ class DashBoard extends Component {
     this.state = {
       projects: [],
       visible: false,
-      loading: false
+      loading: false,
+      status: ""
     };
   }
 
@@ -57,9 +58,24 @@ class DashBoard extends Component {
     this.setState({ visible: false });
   };
 
+  onSubmitMethod = async (values, actions) => {
+    console.log({ values });
+    const data = { ...values, status: this.state.status };
+    await ApiService.createProject(data);
+
+    actions.setSubmitting(false);
+
+    this.handleCancel();
+  };
+
+  getData = (values, data) => {
+    console.log({ data });
+    this.setState({ status: data.value });
+  };
+
   render() {
     const { loggedUser, logout, userInfo, ...props } = this.props;
-    const { projects, visible, loading } = this.state;
+    const { projects, visible, loading, status } = this.state;
 
     return (
       <React.Fragment>
@@ -71,7 +87,10 @@ class DashBoard extends Component {
               loading={loading}
               onOk={this.handleOk}
               onCancel={this.handleCancel}
+              getData={this.getData}
               title="Cadastre seu projeto"
+              status={status}
+              onSubmitMethod={this.onSubmitMethod}
             />
           </ModalTemplate>
         )}
